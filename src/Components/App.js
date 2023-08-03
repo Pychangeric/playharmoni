@@ -1,13 +1,19 @@
-import './App.css';
-import Home from './home/Home';
+import React from 'react'
 
+
+import Login from './Login/Login'
+
+
+ 
 function App() {
   return (
-    <div className="App">
-       <Home/>
-    
+    <div>
+      
+     <Login />
+      
+     
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
