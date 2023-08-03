@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './Home.css';
+
 
 const Home = () => {
   // State to hold the music data fetched from the backend
