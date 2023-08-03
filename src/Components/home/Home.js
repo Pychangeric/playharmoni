@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Share from '../Share';
+import './Home.css';
+
 
 const Home = () => {
   // State to hold the music data fetched from the backend
@@ -24,7 +27,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>Music List</h1>
       <ul>
         {musicData.map((music) => (
@@ -47,10 +50,13 @@ const Home = () => {
                 Play Video
               </a>
             </div>
+            <div>
+              <Share url= {music.video}/>
+            </div>
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
