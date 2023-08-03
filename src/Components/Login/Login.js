@@ -9,17 +9,17 @@ function Login() {
   const [error, setError] = useState('');
   const [isLogged, setLogged] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    // Check if the user is already logged in (token is present in local storage)
+    
     const token = localStorage.getItem('token');
     if (token) {
-      // We set loading to false only after we set the logged-in state
+
       setLogged(true);
       setLoading(false);
     } else {
-      setLoading(false); // In case no token is found, still set loading to false
+      setLoading(false); 
     }
   }, []);
 
@@ -45,7 +45,7 @@ function Login() {
         }
       })
       .then((data) => {
-        // Store the token in local storage on successful login
+    
         localStorage.setItem('token', data.token);
         setLogged(true);
       })
