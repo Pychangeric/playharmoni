@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './playlist.css';
+import './playlist.css'; 
 
 const Playlist = () => {
     const [visible, setVisible] = useState(false);
@@ -45,14 +45,10 @@ const Playlist = () => {
         setCurrentPlaylistId(playlistId);
 
         try {
-            const response = await fetch(`http://localhost:3000/playlists/${playlistId}/added-songs`);
+            const response = await fetch('http://localhost:3000/musics');
             if (response.ok) {
-                const addedSongsData = await response.json();
-                setAddedSongs((prevAddedSongs) => ({
-                    ...prevAddedSongs,
-                    [playlistId]: addedSongsData,
-                }));
-                setAvailableMusics([]); // Clear the available musics when adding to a playlist
+                const musicsData = await response.json();
+                setAvailableMusics(musicsData);
             } else {
                 // Handle error
             }
@@ -69,17 +65,14 @@ const Playlist = () => {
                 });
 
                 if (response.ok) {
-                    // Update the addedSongs state to reflect the added music
+                    // Update addedSongs state to include the newly added music ID
                     setAddedSongs((prevAddedSongs) => ({
                         ...prevAddedSongs,
                         [currentPlaylistId]: [...(prevAddedSongs[currentPlaylistId] || []), musicId],
                     }));
 
-                    // Fetch the updated list of added songs for the current playlist
-                    await handleAddMusicsToPlaylist(currentPlaylistId);
-
-                    // Update the playlists similarly to your existing code
-                    // ...
+                    // Update availableMusics state to remove the added music
+                    setAvailableMusics(prevMusics => prevMusics.filter(music => music.id !== musicId));
                 } else {
                     // Handle error
                 }
