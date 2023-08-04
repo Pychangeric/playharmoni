@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
 import './Home.css';
+import Footer from '../Footer';
 
 
 const Home = () => {
