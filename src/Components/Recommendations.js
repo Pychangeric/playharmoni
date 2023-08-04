@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+// recommendations.js
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Recommendations = ({ userId }) => {
   const [recommendations, setRecommendations] = useState([]);
 
-  useEffect(() => {
-    fetchRecommendations(userId);
-  }, [userId]);
-
-  const fetchRecommendations = async (userId) => {
+  const fetchRecommendations = async () => {
     try {
       const response = await axios.get(`/users/${userId}/recommendations`);
       setRecommendations(response.data.recommendations);
@@ -19,14 +16,15 @@ const Recommendations = ({ userId }) => {
 
   return (
     <div>
+      <h2>Personalized Recommendations</h2>
+      <button onClick={fetchRecommendations}>Get Recommendations</button>
       <ul>
         {recommendations.map((recommendation) => (
           <li key={recommendation.id}>
-            <strong>Title:</strong> {recommendation.song.title} <br />
-            <strong>Artist:</strong> {recommendation.song.artist} <br />
-            <strong>Genre:</strong> {recommendation.song.genre} <br />
-            <strong>Album:</strong> {recommendation.song.album} <br />
-            <strong>Duration:</strong> {recommendation.song.duration} seconds <br />
+            <strong>Title:</strong> {recommendation.title} <br />
+            <strong>Artist:</strong> {recommendation.artist} <br />
+            <strong>Genre:</strong> {recommendation.genre} <br />
+            <strong>Duration:</strong> {recommendation.duration} seconds <br />
           </li>
         ))}
       </ul>
