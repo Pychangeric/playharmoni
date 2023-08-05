@@ -1,4 +1,4 @@
-/* Assuming you have a container for the music player with a class 'c-player' */
+
 
 .c-player {
   max-width: 400px;
@@ -15,7 +15,6 @@ h4 {
   color: #333;
 }
 
-/* Player details */
 .c-player--details {
   margin-bottom: 20px;
 }
@@ -40,7 +39,7 @@ h4 {
   color: #888;
 }
 
-/* Player controls */
+
 .c-player--controls {
   display: flex;
   justify-content: center;
@@ -63,7 +62,7 @@ h4 {
 .play-btn:hover,
 .skip-btn:hover,
 .volume:hover {
-  color: #1db954; /* Spotify green color */
+  color: #1db954; 
 }
 
 .volume {
@@ -85,12 +84,11 @@ h4 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #1db954; /* Spotify green color */
+  background-color: #1db954; 
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Next up song info */
 .c-player p {
   font-size: 14px;
   color: #888;
@@ -100,7 +98,7 @@ h4 {
   color: #333;
   font-weight: bold;
 }
-/* Common styles for the whole page */
+
 body {
   margin: 0;
   padding: 0;
