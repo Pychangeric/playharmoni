@@ -76,7 +76,7 @@ function Audio() {
         img_src: "./images/song-9.jpeg",
         src: "./music/This Year ( Blessing ) - Victor Thompson x Ehis D Greatest (Official Video).mp3"
       }
-  ]); // Your song data goes here
+  ]); 
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
 
