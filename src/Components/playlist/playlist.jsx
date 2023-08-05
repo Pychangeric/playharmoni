@@ -90,7 +90,6 @@ const Playlist = () => {
                         return updatedPlaylists;
                     });
                 } else {
-                    // Handle error
                 }
             } catch (error) {
                 // Handle error
