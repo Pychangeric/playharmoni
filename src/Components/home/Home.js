@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
-import './Home.css';
+import './Home.css'
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
   // Function to fetch music data from the backend
   const fetchMusicData = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/musics');
+      const response = await fetch('http://localhost:3000/musics');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
