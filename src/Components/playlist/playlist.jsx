@@ -13,6 +13,10 @@ const Playlist = () => {
         fetch('http://localhost:3000/playlists')
             .then(response => response.json())
             .then(data => setPlaylists(data));
+
+        // Retrieve added songs information from localStorage
+        const localStorageData = JSON.parse(localStorage.getItem('addedSongs') || '{}');
+        setAddedSongs(localStorageData);
     }, []);
 
     const handleClick = () => {
@@ -65,14 +69,26 @@ const Playlist = () => {
                 });
 
                 if (response.ok) {
-                    // Update addedSongs state to include the newly added music ID
+                    // Update addedSongs state and localStorage
                     setAddedSongs((prevAddedSongs) => ({
                         ...prevAddedSongs,
                         [currentPlaylistId]: [...(prevAddedSongs[currentPlaylistId] || []), musicId],
                     }));
+                    localStorage.setItem('addedSongs', JSON.stringify(addedSongs));
 
-                    // Update availableMusics state to remove the added music
-                    setAvailableMusics(prevMusics => prevMusics.filter(music => music.id !== musicId));
+                    // Update the playlist's addedSongs state on the frontend
+                    setPlaylists(prevPlaylists => {
+                        const updatedPlaylists = prevPlaylists.map(playlist => {
+                            if (playlist.id === currentPlaylistId) {
+                                return {
+                                    ...playlist,
+                                    addedSongs: [...(playlist.addedSongs || []), musicId],
+                                };
+                            }
+                            return playlist;
+                        });
+                        return updatedPlaylists;
+                    });
                 } else {
                     // Handle error
                 }
