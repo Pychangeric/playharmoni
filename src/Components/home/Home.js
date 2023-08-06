@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
-import './Home.css'
+import './Home.css';
 
-
-const Home = () => {
-  // State to hold the music data fetched from the backend
+const Home = ({ isAuthenticated }) => {
   const [musicData, setMusicData] = useState([]);
 
-  // Function to fetch music data from the backend
   const fetchMusicData = async () => {
     try {
       const response = await fetch('http://localhost:3000/musics');
@@ -21,41 +18,58 @@ const Home = () => {
     }
   };
 
-  // Fetch music data when the component mounts
   useEffect(() => {
     fetchMusicData();
   }, []);
 
+  const displayCount = isAuthenticated ? musicData.length : 5;
+
+  // Group musicData by genre
+  const groupedMusicData = musicData.reduce((acc, music) => {
+    if (!acc[music.genre]) {
+      acc[music.genre] = [];
+    }
+    if (acc[music.genre].length < displayCount) {
+      acc[music.genre].push(music);
+    }
+    return acc;
+  }, {});
+
   return (
     <>
       <h1>Music List</h1>
-      <ul>
-        {musicData.map((music) => (
-          <li key={music.id}>
-            <div>
-              <img src={music.avatar} alt={music.title} />
-            </div>
-            <div>
-              <strong>Title:</strong> {music.title}
-            </div>
-            <div>
-              <strong>Genre:</strong> {music.genre}
-            </div>
-            <div>
-              <strong>Album:</strong> {music.album}
-            </div>
-            <div>
-              <strong>Video:</strong>
-              <a href={music.video} target="_blank" rel="noopener noreferrer">
-                Play Video
-              </a>
-            </div>
-            <div>
-              <Share url= {music.video}/>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
+        <div key={genre}>
+          <h1>{genre}</h1>
+          <ul>
+            {musicItems.map((music) => (
+              <li key={music.id}>
+                <div>
+                  <img src={music.avatar} alt={music.title} />
+                </div>
+                <div>
+                  <strong>Title:</strong> {music.title}
+                </div>
+                <div>
+                  <strong>Genre:</strong> {music.genre}
+                </div>
+                <div>
+                  <strong>Album:</strong> {music.album}
+                </div>
+                <div>
+                  <strong>Video:</strong>
+                  <a href={music.video} target="_blank" rel="noopener noreferrer">
+                    Play Video
+                  </a>
+                </div>
+                <div>
+                  <Share url={music.video} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </>
   );
 };
