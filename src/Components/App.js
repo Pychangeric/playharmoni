@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 //import SearchBar from './components/SearchBar';
-import SearchBar from './SearchBar';
+import SearchBar from './searchBar/SearchBar';
 //import Recommendations from './components/Recommendations';
-import Recommendations from './Recommendations';
-import Logo from './Logo';
+import Recommendations from './Recomendation/Recommendations';
+import Logo from './Logo/Logo';
 //import Logo from './components/Logo';
 
 const App = () => {
