@@ -1,13 +1,16 @@
-// recommendations.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Recommendations = ({ userId }) => {
   const [recommendations, setRecommendations] = useState([]);
 
-  const fetchRecommendations = async () => {
+  useEffect(() => {
+    fetchRecommendations(userId);
+  }, [userId]);
+
+  const fetchRecommendations = async (userId) => {
     try {
-      const response = await axios.get(`/users/${userId}/recommendations`);
+      const response = await axios.get(`/recommendations?user_id=${userId}`);
       setRecommendations(response.data.recommendations);
     } catch (error) {
       console.error('Error fetching recommendations:', error);
@@ -16,15 +19,12 @@ const Recommendations = ({ userId }) => {
 
   return (
     <div>
-      <h2>Personalized Recommendations</h2>
-      <button onClick={fetchRecommendations}>Get Recommendations</button>
+      <h2>Recommended Music</h2>
       <ul>
         {recommendations.map((recommendation) => (
           <li key={recommendation.id}>
-            <strong>Title:</strong> {recommendation.title} <br />
-            <strong>Artist:</strong> {recommendation.artist} <br />
-            <strong>Genre:</strong> {recommendation.genre} <br />
-            <strong>Duration:</strong> {recommendation.duration} seconds <br />
+            {/* Display recommendation details */}
+            {recommendation.title} - {recommendation.artist}
           </li>
         ))}
       </ul>
