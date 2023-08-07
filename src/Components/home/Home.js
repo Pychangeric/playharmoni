@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
 import './Home.css';
-import NavBar from '../nav/NavBar';
 import Sidebar from '../sidebar/Sidebar';
-
+import NavBar from '../nav/NavBar';
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
@@ -35,15 +34,15 @@ const Home = () => {
 
   return (
     <>
-      <NavBar />
+  <NavBar />
       <Sidebar />
       <h1>Music List</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
-        <div key={genre}>
+        <div key={genre} className='box-home'>
           <h1>{genre}</h1>
           <ul>
             {musicItems.map((music) => (
-              <li key={music.id}>
+              <li key={music.id} className='box-cards'>
                 <div>
                   <img src={music.avatar} alt={music.title} />
                 </div>
@@ -62,7 +61,7 @@ const Home = () => {
                     Play Video
                   </a>
                 </div>
-                <div>
+                <div className='omera'>
                   <Share url={music.video} />
                 </div>
               </li>
