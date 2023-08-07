@@ -19,7 +19,7 @@
 }
 
 .container h2 button {
-  background-color: crimson;
+  background-color: rgb(17, 22, 63);
   color: white;
   border: none;
   border-radius: 50%;
@@ -43,7 +43,7 @@
 }
 
 .playlist-form button[type="submit"] {
-  background-color: crimson;
+  background-color: rgb(11, 10, 51);
   color: white;
   border: none;
   padding: 8px 12px;
@@ -77,7 +77,7 @@
 }
 
 .playlist-item button {
-  background-color: crimson;
+  background-color: rgb(19, 22, 54);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -118,7 +118,7 @@
 }
 
 .music-popup .music-item button {
-  background-color: crimson;
+  background-color: rgb(2, 7, 19);
   color: white;
   border: none;
   border-radius: 50%;
@@ -131,7 +131,7 @@
   align-items: center; /* Center the plus icon vertically */
 }
 .close-popup {
-  background-color: crimson;
+  background-color: rgb(11, 10, 29);
   color: white;
   border: none;
   padding: 5px 10px;
