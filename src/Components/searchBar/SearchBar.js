@@ -27,6 +27,17 @@ const SearchBar = () => {
     setFilteredMusicList(filteredSongs);
   };
 
+  const fetchMusicById = (id) => {
+    // Fetch music data by ID from the backend API
+    fetch(`http://localhost:3000/musics/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Do something with the fetched music data by ID
+        console.log('Fetched music by ID:', data);
+      })
+      .catch((error) => console.error('Error fetching music by ID:', error));
+  };
+
   return (
     <div>
       <form>
@@ -41,7 +52,9 @@ const SearchBar = () => {
 
       <ul>
         {filteredMusicList.map((music) => (
-          <li key={music.id}>{music.title}</li>
+          <li key={music.id} onClick={() => fetchMusicById(music.id)}>
+            {music.title}
+          </li>
         ))}
       </ul>
     </div>
