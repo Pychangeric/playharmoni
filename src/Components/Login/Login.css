@@ -1,0 +1,127 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .in {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .box {
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #007bff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  label:hover {
+    color: #007bff;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  button {
+    position: relative;
+    width: 100%;
+    background-color: #007bff;
+    background-image: linear-gradient(45deg, #007bff, #0099ff);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: heartbeat 2s infinite;
+  }
+  
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  button::before,
+  button::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #fff;
+    animation: moveLines 5s infinite linear;
+  }
+  
+  button::before {
+    left: -10px;
+  }
+  
+  button::after {
+    right: -10px;
+  }
+  
+  @keyframes moveLines {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  button:hover {
+    background-image: linear-gradient(45deg, #0056b3, #007bff);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  .login span{
+    margin-left: 80px;
+    text-decoration: underline;
+    color: #0099ff;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .login span:hover{
+      color: #0056b3;
+  }
