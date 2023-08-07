@@ -1,0 +1,30 @@
+.profile-popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 60px; /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 1000;
+}
+
+.profile-info {
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
