@@ -1,0 +1,14 @@
+/* Audio.css */
+.audio {
+    /* Your existing styles */
+    position: fixed;
+    left: 300px;
+    top: 100px;
+    bottom: 0;
+    width: 90%;
+    text-align: center;
+    background-color: #080808;
+    color: rgb(243, 239, 239);
+    padding: 10px;
+  }
+  

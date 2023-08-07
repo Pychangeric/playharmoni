@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
 import './Home.css';
+import NavBar from '../nav/NavBar';
+import Sidebar from '../sidebar/Sidebar';
 
-const Home = ({ isAuthenticated }) => {
+const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
   const fetchMusicData = async () => {
@@ -22,21 +24,19 @@ const Home = ({ isAuthenticated }) => {
     fetchMusicData();
   }, []);
 
-  const displayCount = isAuthenticated ? musicData.length : 5;
-
   // Group musicData by genre
   const groupedMusicData = musicData.reduce((acc, music) => {
     if (!acc[music.genre]) {
       acc[music.genre] = [];
     }
-    if (acc[music.genre].length < displayCount) {
-      acc[music.genre].push(music);
-    }
+    acc[music.genre].push(music);
     return acc;
   }, {});
 
   return (
     <>
+      <NavBar />
+      <Sidebar />
       <h1>Music List</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
         <div key={genre}>
