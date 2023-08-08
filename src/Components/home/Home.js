@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Category from '../cartegory/Category';
 
+
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
@@ -81,6 +82,7 @@ const Home = () => {
               <Share url={music.video} />
             </div>
           ))}
+
         </div>
       ))}
     </div>

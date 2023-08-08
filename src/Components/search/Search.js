@@ -29,32 +29,16 @@ const Search = () => {
     }
   };
 
-  return (
-    <div className="search-container">
-      <form onSubmit={handleSearch}>
-        <div className="search-input">
-          <input
-            type="text"
-            placeholder="Enter Music Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <button type="submit">Search</button>
-        </div>
-      </form>
-      {foundMusic && (
-        <div className="found-music">
-          <h3>Found Music</h3>
-          <p>ID: {foundMusic.id}</p>
-          <p>Title: {foundMusic.title}</p>
-          <p>Genre: {foundMusic.genre}</p>
-          <p>Album: {foundMusic.album}</p>
-          <p>Video: <a href={foundMusic.video} target="_blank" rel="noopener noreferrer">Play Video</a></p>
-        </div>
-      )}
-    </div>
-  );
-};
 
-export default Search;
+function Search() {
+  const[query,setQuery] = useState('')
+  return (
+    <div>
+   <form>
+    <input type='text' />
+   </form>
+    </div>
+  )
+}
+
+export default Search

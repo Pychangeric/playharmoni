@@ -1,0 +1,30 @@
+.c--search input{
+    padding: 10px;
+    width: 30%;
+    border-radius: 1.1rem;
+    border: none;
+
+}
+.d--search{
+   position: fixed;
+    width: 25%;
+    height: 10lh;
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+    overflow-y: scroll;
+    border-radius: 1.1em;
+    letter-spacing: 1.1px;
+    margin-top: 10px;
+}
+.e--search:hover{
+    background-color: antiquewhite;
+    padding: 3px;
+}
+.c--search svg{
+    margin-left: -50px;
+    color: black;
+}
+.e--search p{
+    margin-left: 25px;
+}
