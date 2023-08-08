@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
-import Home from '../home/Home';
-=======
-import Home from '../Home/Home'
->>>>>>> 01e743e142218336bcbd8979b53bd0056470a594
+
+
+import Home from '../home/Home'
 import Signup from '../Signup/Signup';
 import './Login.css';
 
