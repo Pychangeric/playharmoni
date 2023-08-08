@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Playlist from '../playlist/playlist';
+import Category from '../cartegory/Category';
 import './Sidebar.css';
 import Audio from '../Audio/Audio';
 import Logo from '../Logo/Logo';
@@ -21,6 +22,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+      <Category />
       <Logo />
       <ul className="sidebar-buttons">
         <div className="fade-box">

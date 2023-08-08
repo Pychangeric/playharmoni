@@ -1,6 +1,7 @@
 /* Sidebar styles */
 .sidebar {
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 250px;
@@ -20,7 +21,7 @@
 
 /* Faded box styles */
 .fade-box {
-  background-color: rgba(7, 17, 155, 0.2); /* Faded background color */
+  background-color: rgba(6, 22, 255, 0.2); /* Faded background color */
   padding: 10px; /* Adjust padding as needed */
   border-radius: 5px;
   max-width: 100%;

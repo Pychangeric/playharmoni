@@ -5,6 +5,7 @@ import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import Category from '../cartegory/Category'
 
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
@@ -36,12 +37,12 @@ const Home = () => {
 
   return (
     <div className='home'>
+      <Category />
       <NavBar />
       <Sidebar />
       <h1>Music List</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
-        <div key={genre} className='box-home'>
-          <h1>{genre}</h1>
+        <div  className='box-home'>
             {musicItems.map((music) => (
               <div key={music.id} className='box-cards'>
                   <img src={music.avatar} alt={music.title} />
@@ -51,7 +52,8 @@ const Home = () => {
                   <a href={music.video} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPlay} />
                   </a>
-                  <Share url={music.video} />
+                  <br />
+                  <Share url={music.video}  />
               </div>
             ))}
         </div>
