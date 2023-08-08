@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Category from '../cartegory/Category'
 
+
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
@@ -49,11 +50,11 @@ const Home = () => {
                   <h4> {music.title}</h4>
                 <h5>{music.genre}</h5>
                   <h6> {music.album}</h6>
+                  <div className=''>
                   <a href={music.video} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPlay} />
                   </a>
-                  <br />
-                  <Share url={music.video}  />
+                  </div>
               </div>
             ))}
         </div>
