@@ -54,7 +54,7 @@ export default function Share(url) {
       quote={'Dummy text!'}
       hashtag="#muo"
     >
-      <TwitterIcon size={32} round />
+      <TwitterIcon size={32} round  />
     </TwitterShareButton>
     </>
   )
