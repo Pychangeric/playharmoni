@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Playlist from '../playlist/playlist';
 import './Sidebar.css';
 import Audio from '../Audio/Audio';
-
 import Logo from '../Logo/Logo';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import Recommendation from '../Recomendation/Recommendation';
-import Profile from '../profile/Profile';
 
 const Sidebar = () => {
   const [showAudio, setShowAudio] = useState(false);
@@ -40,9 +38,7 @@ const Sidebar = () => {
         <div className="audio-grid-container">
           <Audio />
           <Recommendation />
-          <Profile />
         </div>
-        
       )}
     </div>
   );
