@@ -3,6 +3,8 @@ import Share from '../Share';
 import './Home.css';
 import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
@@ -40,33 +42,18 @@ const Home = () => {
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
         <div key={genre} className='box-home'>
           <h1>{genre}</h1>
-          <ul>
             {musicItems.map((music) => (
-              <li key={music.id} className='box-cards'>
-                <div>
+              <div key={music.id} className='box-cards'>
                   <img src={music.avatar} alt={music.title} />
-                </div>
-                <div>
-                  <strong>Title:</strong> {music.title}
-                </div>
-                <div>
-                  <strong>Genre:</strong> {music.genre}
-                </div>
-                <div>
-                  <strong>Album:</strong> {music.album}
-                </div>
-                <div>
-                  <strong>Video:</strong>
+                  <h4> {music.title}</h4>
+                <h5>{music.genre}</h5>
+                  <h6> {music.album}</h6>
                   <a href={music.video} target="_blank" rel="noopener noreferrer">
-                    Play Video
+                    <FontAwesomeIcon icon={faPlay} />
                   </a>
-                </div>
-                <div className='omera'>
                   <Share url={music.video} />
-                </div>
-              </li>
+              </div>
             ))}
-          </ul>
         </div>
       ))}
     </>
