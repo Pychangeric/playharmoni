@@ -1,9 +1,9 @@
 import React from 'react';
-import './Profile.css';
+import './ProfilePopup.css';
 
 const Profile = ({ userData, onClose }) => {
   return (
-    <div className="profile">
+    <div className="profile-popup">
       <button className="close-button" onClick={onClose}>
         Close
       </button>
