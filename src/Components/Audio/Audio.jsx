@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Player from '../Player';
+import './Audio.css'
 
 function Audio() {
   const [songs] = useState([
@@ -112,7 +113,7 @@ function Audio() {
             <div>
               <h6>{song.title}</h6>
               <p>{song.artist}</p>
-              <button type='click' onClick={() => handlePlayButtonClick(index)}>Play</button>
+              <button type="button" onClick={() => handlePlayButtonClick(index)}>Play</button>
             </div>
           </div>
         ))}
@@ -122,3 +123,4 @@ function Audio() {
 }
 
 export default Audio;
+
