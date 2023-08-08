@@ -1,6 +1,8 @@
 .box-home {
   display: inline-block;
   margin-left: 20%;
+  left: 250px;
+  margin-top: 100px;
 }
 
 .box-cards {
