@@ -1,19 +1,59 @@
-/* Category.css */
+/* Category component styles */
+.category {
+  position: relative;
+  display: inline-block;
+}
 
+/* Category button styles */
 .category-button {
-  background-color: #083e7c;
-  font-size: 40px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
-  color: white;
+  background-color: #00CED1; /* Bright teal secondary color */
+  color: #fff; /* White text color */
   border: none;
-  border-radius: 10px;
-  padding: 15px 32px;
-  text-align: center;
-}
-.category-button:hover {
- background-color: #2f87eb;
- color: white;
- cursor: pointer;
- transition: 0.3s;
+  border-radius: 5px;
+  padding: 14px 24px; /* Increase padding for better visibility */
+  font-size: 18px; /* Increase font size for better visibility */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.category-button:hover {
+  background-color: #0099cc; /* Slightly darker shade on hover */
+}
+
+/* Genre dropdown styles */
+.genre-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* White background */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Genre button styles */
+.genre-dropdown button {
+  background-color: #fff; /* White background */
+  color: #000; /* Black text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #eee; /* Light gray border at the bottom */
+}
+
+.genre-dropdown button:hover {
+  background-color: #00CED1; /* Light gray background on hover */
+}
+
+.genre-dropdown button:last-child {
+  border-bottom: none; /* Remove border from the last button */
+}
+
+.genre-dropdown button.active {
+  background-color: #00CED1; /* Bright teal secondary color for active genre */
+  color: #fff; /* White text color for active genre */
+}
