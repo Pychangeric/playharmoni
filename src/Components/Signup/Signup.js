@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Signup.css';
-import Login from '../Login/Login';
+import Profile from '../profile/Profile';
 
 function Signup() {
   const [username, setUserName] = useState('');
@@ -8,8 +8,8 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errors, setErrors] = useState([]);
-  const [hasSignedUp, setHasSignedUp] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); // State to control the display of the Login component
+  const [showProfile, setShowProfile] = useState(false); // State to control the display of the Profile component
+  const [userData, setUserData] = useState(null);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -30,8 +30,8 @@ function Signup() {
     })
       .then((response) => {
         if (response.ok) {
-          setHasSignedUp(true);
-          setShowLogin(true); // Show the Login component after successful sign-up
+          setUserData({ username, email }); // Set user data
+          setShowProfile(true); // Show the Profile component after successful sign-up
         } else {
           return response.json().then((data) => {
             if (data.errors) {
@@ -50,7 +50,7 @@ function Signup() {
 
   return (
     <div className='container'>
-      {!showLogin ? (
+      {!showProfile ? (
         <div className='signup'>
           <form onSubmit={handleSignUp} className='up'>
             <div className='box'>
@@ -80,13 +80,10 @@ function Signup() {
                 </div>
               )}
             </div>
-            <p>
-              Already a member? <span onClick={() => setShowLogin(true)}>Login here</span>
-            </p>
           </form>
         </div>
       ) : (
-        <Login />
+        <Profile userData={userData} onClose={() => setShowProfile(false)} />
       )}
     </div>
   );
