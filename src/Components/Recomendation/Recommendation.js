@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import './Recommendation.css';
 
-const SearchBar = () => {
+const Recommendation = () => {
   const [query, setQuery] = useState('');
   const [musicList, setMusicList] = useState([]);
   const [filteredMusicList, setFilteredMusicList] = useState([]);
@@ -44,7 +45,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className="recommendation-container">
+      <h3>Recommendations:</h3>
       <form>
         <input
           type="text"
@@ -54,17 +56,14 @@ const SearchBar = () => {
         />
         <button type="submit">Search</button>
       </form>
-
-      <h3>Search Results:</h3>
       <ul>
         {filteredMusicList.map((music) => (
           <li key={music.id}>{music.title}</li>
         ))}
       </ul>
-
       {query && recommendations.length > 0 && (
         <div>
-          <h3>Random Recommendations:</h3>
+          <h4>Random Recommendations:</h4>
           <ul>
             {recommendations.map((music) => (
               <li key={music.id}>{music.title}</li>
@@ -76,4 +75,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default Recommendation;
