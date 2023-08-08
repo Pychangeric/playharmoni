@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
-import Playlist from "../playlist/playlist";
-import './Sidebar.css'; 
+import Playlist from '../playlist/playlist';
+import './Sidebar.css';
 import Audio from '../Audio/Audio';
-import Search from '../search/Search';
 import Logo from '../Logo/Logo';
+import HeadphonesIcon from '@mui/icons-material/Headphones';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import Recommendation from '../Recomendation/Recommendation';
 
 const Sidebar = () => {
-  const [showAudio, setShowAudio] = useState(false); 
-  const [showPlaylist, setShowPlaylist] = useState(false); 
+  const [showAudio, setShowAudio] = useState(false);
+  const [showPlaylist, setShowPlaylist] = useState(false);
 
   const handleAudioButtonClick = () => {
     setShowAudio((prevShowAudio) => !prevShowAudio);
   };
 
   const handlePlaylistButtonClick = () => {
-    setShowPlaylist((prevShowPlaylist) => !prevShowPlaylist); 
+    setShowPlaylist((prevShowPlaylist) => !prevShowPlaylist);
   };
 
   return (
     <div className="sidebar">
       <Logo />
-      <Search />
-      <button onClick={handleAudioButtonClick}>Toggle Audio</button>
-      <button onClick={handlePlaylistButtonClick}>Toggle Playlist</button>
-      {showPlaylist && <Playlist />} 
+      <ul className="sidebar-buttons">
+        <div className="fade-box">
+          <HeadphonesIcon />
+          <li onClick={handleAudioButtonClick}>Audio</li>
+        </div>
+        <h1>Playlist</h1>
+        <div className="fade-box">
+          <PlaylistAddIcon />
+          <li onClick={handlePlaylistButtonClick}>Playlist</li>
+        </div>
+      </ul>
+      {showPlaylist && <Playlist />}
       {showAudio && (
         <div className="audio-grid-container">
           <Audio />
+          <Recommendation />
         </div>
-      )} 
+      )}
     </div>
   );
 };

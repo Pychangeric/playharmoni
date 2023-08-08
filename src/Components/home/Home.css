@@ -1,18 +1,6 @@
-.box-home li {
-  display: inline-block;
-margin-left: 20%;
-}
-
-.box-cards li{
-width: auto;
-  padding: 10px;
-  background-color: aqua;
-  color: aliceblue;
-}
-
-.omera {
-
-  margin-top: 5px;
+.home {
+  background-color: rgb(9, 9, 49);
+  color: azure;
 }
 
 

@@ -3,6 +3,7 @@ import Share from '../Share';
 import './Home.css';
 import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
+
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
 
@@ -23,7 +24,6 @@ const Home = () => {
     fetchMusicData();
   }, []);
 
-  // Group musicData by genre
   const groupedMusicData = musicData.reduce((acc, music) => {
     if (!acc[music.genre]) {
       acc[music.genre] = [];
@@ -33,8 +33,8 @@ const Home = () => {
   }, {});
 
   return (
-    <>
-  <NavBar />
+    <div className='home'>
+      <NavBar />
       <Sidebar />
       <h1>Music List</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
@@ -69,7 +69,7 @@ const Home = () => {
           </ul>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

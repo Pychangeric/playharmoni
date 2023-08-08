@@ -30,7 +30,6 @@ const Search = () => {
 
   return (
     <div className="search-container">
-      <h2>Search for Music by Title</h2>
       <form onSubmit={handleSearch}>
         <div className="search-input">
           <input
