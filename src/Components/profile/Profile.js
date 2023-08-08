@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 function UserDataDisplay({ userId }) {
@@ -19,6 +20,7 @@ function UserDataDisplay({ userId }) {
   }, [userId]);
 
   return (
+
     <div>
       <h2>User Data</h2>
       {userData ? (

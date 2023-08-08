@@ -14,34 +14,33 @@ const Sidebar = () => {
 
   const handleAudioButtonClick = () => {
     setShowAudio((prevShowAudio) => !prevShowAudio);
+    setShowPlaylist(false); // Close playlist when audio is clicked
   };
 
   const handlePlaylistButtonClick = () => {
     setShowPlaylist((prevShowPlaylist) => !prevShowPlaylist);
+    setShowAudio(false); // Close audio when playlist is clicked
   };
 
   return (
     <div className="sidebar">
-      <Category />
-      <Logo />
-      <ul className="sidebar-buttons">
-        <div className="fade-box">
-          <HeadphonesIcon />
-          <li onClick={handleAudioButtonClick}>Audio</li>
-        </div>
-        <h1>Playlist</h1>
-        <div className="fade-box">
-          <PlaylistAddIcon />
-          <li onClick={handlePlaylistButtonClick}>Playlist</li>
-        </div>
-      </ul>
+      <Logo /> {/* Logo at the top */}
+      <div className="fade-box">
+        <HeadphonesIcon />
+        <button className="sidebar-button" onClick={handleAudioButtonClick}>
+          Audio
+        </button>
+      </div>
+      {showAudio && <Audio />}
+      <div className="fade-box">
+        <PlaylistAddIcon />
+        <button className="sidebar-button" onClick={handlePlaylistButtonClick}>
+          Playlist
+        </button>
+      </div>
       {showPlaylist && <Playlist />}
-      {showAudio && (
-        <div className="audio-grid-container">
-          <Audio />
-          <Recommendation />
-        </div>
-      )}
+      <Category />
+      <Recommendation />
     </div>
   );
 };
