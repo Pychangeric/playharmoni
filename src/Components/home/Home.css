@@ -1,71 +1,79 @@
-.box-home {
-  display: inline-block;
-  margin-left: 20%;
+/* Home.css */
 
-  width: 80%;
-  height: 10px;
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 200px;
+}
+
+.box-home {
+  background-color: #000; /* Set the background color to black */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .box-cards {
-  display: flex;
-  align-items: center;
-height: 3lh;
-gap: 20px;
- padding: 20px;
- box-shadow: 0 0 4px rgba(106, 83, 2, 0.4);
- cursor: pointer;
-
+  background-color: #fff; /* White background */
+  border: 1px solid #00CED1; /* Teal primary color border */
+  border-radius: 10px;
+  padding: 10px; /* Reduced padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: calc(25% - 20px); /* Calculate width for four cards with gap */
+  margin: 0; /* Remove default margin */
 }
-
 .box-cards img {
-width: 50px;
-height: 50px;
-  border-radius: 2.1em;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 5px; /* Reduced margin */
+  max-height: 100px; /* Set a maximum height for the image */
 }
 
 .box-cards h4 {
-  color: #fff;
-  text-transform: capitalize;
-  font-size: 16px;
-  width: 18px;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333; /* Dark gray text color */
 }
 
 .box-cards h5 {
-  color: #fff;
-  font-size: 16px;
-  margin-left: 20%;
-  text-align: center;
-  width: 18px;
+  margin: 5px 0; /* Reduced margin */
+  font-size: 1rem;
+  color: #666; /* Light gray text color */
 }
 
 .box-cards h6 {
-  color: #fff;
-  font-size: 18px;
-  margin-left: 20%;
-}
-
-.box-home h1 {
-  font-size: 24px;
-  color: #333;
-  margin-top: 20px;
-  text-transform: uppercase;
-  font-family: monospace;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #999; /* Lighter gray text color */
 }
 
 .box-cards a {
- 
-  padding: 6px 12px;
-  background-color: #007bff;
-  color: #fff;
+  color: #00CED1; /* Teal primary color */
   text-decoration: none;
-  border-radius: 4px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-  margin-left: 20%;
-  width: 20px;
-  text-align: center;
+  transition: color 0.3s ease-in-out;
 }
 
 .box-cards a:hover {
-  background-color: #0056b3;
+  color: #0099cc; /* Slightly darker shade on hover */
+}
+
+.box-cards a svg {
+  font-size: 1.5rem;
+  margin-top: 5px; /* Reduced margin */
+}
+
+.box-cards .share-button {
+  margin-top: 5px; /* Reduced margin */
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .box-cards {
+    width: calc(25% - 20px); /* Calculate width for four cards with gap */
+  }
 }
