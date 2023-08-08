@@ -1,59 +1,55 @@
-/* Category component styles */
 .category {
   position: relative;
   display: inline-block;
 }
 
-/* Category button styles */
 .category-button {
-  background-color: #00CED1; /* Bright teal secondary color */
-  color: #fff; /* White text color */
+  background-color: #090c22; 
+  color: #fff; 
   border: none;
   border-radius: 5px;
-  padding: 14px 24px; /* Increase padding for better visibility */
-  font-size: 18px; /* Increase font size for better visibility */
+  padding: 14px 24px;
+  font-size: 18px; 
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .category-button:hover {
-  background-color: #0099cc; /* Slightly darker shade on hover */
+  background-color: #15184b; 
 }
 
-/* Genre dropdown styles */
 .genre-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: #fff; /* White background */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #080b2c; 
+  box-shadow: 0px 2prgb(18, 21, 49)x rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   z-index: 1;
 }
 
-/* Genre button styles */
 .genre-dropdown button {
-  background-color: #fff; /* White background */
-  color: #000; /* Black text color */
+  background-color: #060a2b; 
+  color: #faf8f8; 
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-bottom: 1px solid #eee; /* Light gray border at the bottom */
+  border-bottom: 1px solid #eee; 
 }
 
 .genre-dropdown button:hover {
-  background-color: #00CED1; /* Light gray background on hover */
+  background-color: #1f1061; 
 }
 
 .genre-dropdown button:last-child {
-  border-bottom: none; /* Remove border from the last button */
+  border-bottom: none; 
 }
 
 .genre-dropdown button.active {
-  background-color: #00CED1; /* Bright teal secondary color for active genre */
-  color: #fff; /* White text color for active genre */
+  background-color: #0c0b47; 
+  color: #fff; 
 }

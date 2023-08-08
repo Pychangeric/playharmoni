@@ -4,7 +4,7 @@
   background-color: #140d2e;
   border: none;
   margin-top: 16px;
-  color: #fff;
+  color: #fcfafa;
   overflow: hidden;
 }
   
@@ -25,14 +25,14 @@
   
   .recommendation-container button[type="submit"] {
     padding: 6px 12px;
-    background-color: #130e3f;
-    color: #fff;
+    background-color: #030308;
+    color: #0d1649;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   .music-list {
-    background-color: rgb(20, 26, 77);
+    background-color: rgb(3, 3, 8);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -42,12 +42,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    background-color: rgb(14, 9, 41);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
   }
   
   .music-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(26, 18, 59, 0.1);
     transform: translateX(5px);
   }
   
