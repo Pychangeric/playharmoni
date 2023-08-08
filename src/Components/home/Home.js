@@ -5,6 +5,7 @@ import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import Category from '../cartegory/Category'
 
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
@@ -36,6 +37,7 @@ const Home = () => {
 
   return (
     <div className='home'>
+      <Category />
       <NavBar />
       <Sidebar />
       <h1>Music List</h1>
