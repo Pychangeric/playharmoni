@@ -1,18 +1,39 @@
+/* Sidebar styles */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 250px;
-  background-color: #030303; 
-  border-right: 1px solid #ddd; 
-  overflow-y: auto; 
-  padding: 20px; 
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); 
+  height: 100%;
+  background-color: rgb(3, 3, 14);
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
 }
+
+/* Audio grid container styles */
 .audio-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
+/* Faded box styles */
+.fade-box {
+  background-color: rgba(7, 17, 155, 0.2); /* Faded background color */
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5px;
+  max-width: 100%;
+  margin-left: 0;
+  margin-bottom: 5px; /* Add margin at the bottom of each box */
+  display: flex; /* Display items in a row */
+  align-items: center; /* Align items vertically in the center */
+}
+
+/* Icon styles */
+.fade-box::before {
+  font-family: 'Material Icons'; /* Use Material Icons font */
+  content: '\E30C'; /* Unicode for the desired icon (Replace with actual icon code) */
+  font-size: 30px; /* Adjust the icon size */
+  margin-right: 5px; /* Add space between icon and text */
+}
