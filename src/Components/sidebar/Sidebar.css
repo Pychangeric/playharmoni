@@ -9,11 +9,8 @@
   overflow-y: auto;
   padding: 20px;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   border-right: 2px solid #fff; /* Add white line border on the right */
-=======
-  border-right: 1px solid #111841; 
->>>>>>> 14ff477167fbacd1cce980195be57807612bbf03
+
 
 }
 
