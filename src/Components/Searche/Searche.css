@@ -1,14 +1,52 @@
-.c--search input{
-    padding: 10px;
-    width: 100%;
-    border-radius: 1.1rem;
-    border: none;
+/* Searche.css */
 
+.c--search {
+  display: flex;
+  align-items: center;
+  background-color: #F9F9F9; /* Off-White */
+  border: 1px solid #CCCCCC; /* Light Gray */
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  border-radius: 20px; /* Add border-radius to round the corners */
 }
+
+.c--search:hover {
+  border-color: #39CCCC; /* Teal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.c--search input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+  color: #333333; /* Dark Gray */
+  background-color: transparent;
+}
+
+.c--search input::placeholder {
+  color: #CCCCCC; /* Light Gray */
+}
+
+
+.c--search svg {
+  color: #333333; /* Dark Gray */
+  margin-left: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.c--search svg:hover {
+  color: #39CCCC; /* Teal */
+}
+
 .d--search{
    position: fixed;
     width: 25%;
-    height: 10lh;
+    height: 50px;
     background-color: aliceblue;
     color: black;
     cursor: pointer;

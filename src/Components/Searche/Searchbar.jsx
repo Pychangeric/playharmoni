@@ -27,7 +27,7 @@ const Searchbar = ({ setSearchResults }) => {
       <div className='c--search'>
      
         <input
-          placeholder="Type to search..."
+          placeholder="search music title..."
           value={query}
           onChange={(e) => handleChange(e.target.value)}
         />

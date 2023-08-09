@@ -163,10 +163,10 @@ const Playlist = () => {
               <h4>{playlist.title}</h4>
               <button className="delete-button" onClick={() => handleDeletePlaylist(playlist.id)}>Delete</button>
             </div>
-            <p>Description: {playlist.description}</p>
+            <p className='parag'>Description: <span>{playlist.description}</span></p>
             <button onClick={() => handleAddMusicsToPlaylist(playlist.id)}>Add Musics</button>
             <button onClick={() => handlePlayMusic(playlist.id)}>Play</button>
-            <button onClick={handlePauseMusic}>Pause</button>
+            <button className='pause' onClick={handlePauseMusic}>Pause</button>
             {addedSongs[playlist.id] && (
               <div>
                 <p>Added Songs:</p>
