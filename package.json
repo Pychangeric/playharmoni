@@ -16,14 +16,17 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "ffmpeg.js": "^4.2.9003",
-    "react": "^18.2.0",
-    "react-scripts": "^5.0.1",
+    "howler": "^2.2.3",
+    "package-name": "^0.1.0",
     "proxy": "http://localhost:3000",
-
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "react-scripts": "^5.0.1",
     "react-share": "^4.4.1",
+    "styled-components": "^6.0.7",
     "web-vitals": "^3.4.0"
   },
- 
   "scripts": {
     "start": " PORT=4000 react-scripts start",
     "build": "react-scripts build",

@@ -4,6 +4,7 @@ import './Recommendation.css';
 const Recommendation = () => {
   const [musicList, setMusicList] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
     // Fetch music data from the backend API
@@ -16,29 +17,32 @@ const Recommendation = () => {
   }, []);
 
   useEffect(() => {
-    // Generate random recommendations from the entire music list
-    const randomRecommendations = getRandomElements(musicList, 5); // Change '5' to the number of random recommendations you want to show
-    setRecommendations(randomRecommendations);
+    // Start the timer to change recommendations every 2 seconds
+    const timer = setInterval(changeRecommendation, 2000);
+
+    // Clear the timer when the component unmounts
+    return () => clearInterval(timer);
   }, [musicList]);
 
-  // Helper function to get random elements from an array
-  const getRandomElements = (array, count) => {
-    const shuffledArray = array.sort(() => 0.5 - Math.random());
-    return shuffledArray.slice(0, count);
+  const changeRecommendation = () => {
+    if (musicList.length > 0) {
+      const randomIndex = Math.floor(Math.random() * musicList.length);
+      setCurrentSlideIndex(randomIndex);
+    }
   };
+
+  const currentMusic = musicList[currentSlideIndex];
 
   return (
     <div className="recommendation-container">
-      <ul className="music-list">
-        {recommendations.map((music) => (
-          <li key={music.id} className="music-item">
-            <div className="music-avatar">
-              <img src={music.avatarUrl} alt={music.title} />
-            </div>
-            <span className="music-title">{music.title}</span>
-          </li>
-        ))}
-      </ul>
+      {currentMusic && (
+        <div className="music-item">
+          <div className="music-avatar">
+            <img src={currentMusic.avatar} alt={currentMusic.title} />
+          </div>
+          <span className="music-title">{currentMusic.title}</span>
+        </div>
+      )}
     </div>
   );
 };

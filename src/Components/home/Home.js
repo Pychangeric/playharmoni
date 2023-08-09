@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
 import './Home.css';
-import Footer from '../Footer';
-
+import Footer from '../footer/Footer';
+import MusicPlayer from '../others/MusicPlayer'; 
 import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -58,6 +58,8 @@ const Home = () => {
 
   return (
     <div className='home'>
+      <MusicPlayer />
+      <Footer />
       <Category />
       <NavBar />
       <Sidebar />
