@@ -1,14 +1,12 @@
-import './App.css';
-import Home from './home/Home';
-import Footer from './Footer';
 
+import React from 'react'
+import Login from './Login/Login'
 function App() {
   return (
-    <div className="App">
-       <Home/>
-      <Footer />
+    <div>
+        <Login />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

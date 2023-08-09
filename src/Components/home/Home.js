@@ -3,15 +3,19 @@ import Share from '../Share';
 import './Home.css';
 import Footer from '../Footer';
 
+import Sidebar from '../sidebar/Sidebar';
+import NavBar from '../nav/NavBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import Category from '../cartegory/Category';
+
 
 const Home = () => {
-  // State to hold the music data fetched from the backend
   const [musicData, setMusicData] = useState([]);
 
-  // Function to fetch music data from the backend
   const fetchMusicData = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/musics');
+      const response = await fetch('http://localhost:3000/musics');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -22,42 +26,68 @@ const Home = () => {
     }
   };
 
-  // Fetch music data when the component mounts
   useEffect(() => {
     fetchMusicData();
   }, []);
 
+  const groupedMusicData = musicData.reduce((acc, music) => {
+    if (!acc[music.genre]) {
+      acc[music.genre] = [];
+    }
+    acc[music.genre].push(music);
+    return acc;
+  }, {});
+
+  // Define an array of background colors
+  const cardBackgroundColors = [
+    '#00CED1', // Bright Teal
+    '#FF6F61', // Coral
+    '#FFD700', // Lemon Yellow
+    '#E0FFFF', // Light Cyan
+    '#9370DB', // Medium Purple
+    '#FFA500', // Orange
+    '#2E77A3', // Light Blue
+    '#4E9E5E', // Light Green
+    '#8563A7', // Light Purple
+    '#D18E9E', // Light Pink
+    '#E89E53', // Light Orange
+    
+    // Add more colors as needed
+  ];
+  
+
   return (
-    <>
+    <div className='home'>
+      <Category />
+      <NavBar />
+      <Sidebar />
       <h1>Music List</h1>
-      <ul>
-        {musicData.map((music) => (
-          <li key={music.id}>
-            <div>
+      {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
+        <div className='box-home'>
+          {musicItems.map((music, index) => (
+            <div
+              key={music.id}
+              className='box-cards'
+              style={{
+                backgroundColor: cardBackgroundColors[index % cardBackgroundColors.length],
+                borderColor: cardBackgroundColors[index % cardBackgroundColors.length],
+              }}
+            >
               <img src={music.avatar} alt={music.title} />
-            </div>
-            <div>
-              <strong>Title:</strong> {music.title}
-            </div>
-            <div>
-              <strong>Genre:</strong> {music.genre}
-            </div>
-            <div>
-              <strong>Album:</strong> {music.album}
-            </div>
-            <div>
-              <strong>Video:</strong>
-              <a href={music.video} target="_blank" rel="noopener noreferrer">
-                Play Video
+              <h4>{music.title}</h4>
+              <h5>{music.genre}</h5>
+              <h6>{music.album}</h6>
+              <a href={music.video} target='_blank' rel='noopener noreferrer'>
+                <FontAwesomeIcon icon={faPlay} />
               </a>
+              <br />
+              <Share url={music.video} />
             </div>
-            <div>
-              <Share url= {music.video}/>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </>
+          ))}
+
+        </div>
+      ))}
+    </div>
   );
 };
 

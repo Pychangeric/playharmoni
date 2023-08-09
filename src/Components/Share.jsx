@@ -21,7 +21,7 @@ export default function Share({url}) {
       quote={"MY MUSIC"}
       hashtag="#harmoni"
     >
-      <TwitterIcon size={32} round />
+      <TwitterIcon size={32} round  />
     </TwitterShareButton>
 
     <FacebookShareButton

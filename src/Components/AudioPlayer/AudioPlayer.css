@@ -1,0 +1,51 @@
+/* AudioPlayer.css */
+
+.audio-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progress-bar {
+    width: 80%;
+  }
+  
+  .volume-controls {
+    display: flex;
+    gap: 10px;
+    width: 60%;
+    align-items: center;
+  }
+  
+  /* Style for the Slider component */
+  .MuiSlider-root {
+    width: 100%;
+    color: white;
+  }
+  
+  /* Styling the icons */
+  .MuiSvgIcon-root {
+    font-size: 32px;
+    cursor: pointer;
+  }
+  
+  audio {
+    display: none;
+  }
+  

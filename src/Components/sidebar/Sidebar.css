@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #000; 
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #111841; 
+
+}
+
+.sidebar-buttons {
+  list-style: none;
+  padding: 10px;
+}
+
+
+.fade-box {
+  background-color: #0a0720; 
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  color: #efeef0; 
+  cursor: pointer;
+}
+
+.sidebar-buttons h1 {
+  color: #0c1942; 
+  margin-bottom: 10px;
+}
+
+
