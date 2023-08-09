@@ -4,6 +4,7 @@ import SearchResultList from './SearchResultList';
 
 function Searchbare() {
   const [searchResults, setSearchResults] = useState([]);
+  
 
   return (
     <div>

@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import './Searche.css'
+import React from 'react';
+import './Searche.css';
 
-const SearchResult = ({result}) => {
-
+const SearchResult = ({ result, onClick }) => {
   return (
-    <div className='e--search' onClick={e => alert(`you clicked on ${result}`)}>
- <p>{result.title}</p>
+    <div className="d--search" onClick={onClick}>
+      <p>{result.title}</p>
     </div>
-  )
-}
+  );
+};
 
-export default SearchResult
+export default SearchResult;
