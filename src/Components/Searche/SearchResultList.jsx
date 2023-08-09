@@ -1,30 +1,48 @@
 import React, { useState } from 'react';
-import './Searche.css';
 import SearchResult from './SearchResult';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import './Searche.css';
 
-const SearchResultList = ({ searchResults }) => {
-    const [openBox, setOpenBox] = useState(true); // Start with the box open
+function SearchResultList({ searchResults }) {
+  const [selectedMusic, setSelectedMusic] = useState(null);
 
-    const handleBox = (value) => {
-        setOpenBox(value);
-    };
+  const handleMusicClick = (music) => {
+    setSelectedMusic(music);
+  };
 
-    return (
-        <div>
-            {openBox && (
-                <div className='d--search'>
-                    <button onClick={() => handleBox(false)}>X</button>
-                    {searchResults.length > 0 ? (
-                        searchResults.map((result, id) => (
-                            <SearchResult key={id} result={result} id={id} />
-                        ))
-                    ) : (
-                        <p>No results found</p>
-                    )}
-                </div>
-            )}
+  const handleClosePopup = () => {
+    setSelectedMusic(null);
+  };
+
+  return (
+    <div>
+      <div>
+        {searchResults.map((result) => (
+          <SearchResult
+            key={result.id}
+            result={result}
+            onClick={() => handleMusicClick(result)}
+          />
+        ))}
+      </div>
+      {selectedMusic && (
+        <div className="popup-container">
+          <div className="popup-content">
+            <button className="popup-close" onClick={handleClosePopup}>
+              Close
+            </button>
+            <h2>{selectedMusic.title}</h2>
+            <p>{selectedMusic.genre}</p>
+            <img src={selectedMusic.avatar} alt='' />
+            <a href={selectedMusic.video} target='_blank' rel='noopener noreferrer'>
+                <FontAwesomeIcon icon={faPlay} />
+              </a>
+          </div>
         </div>
-    );
-};
+      )}
+    </div>
+  );
+}
 
 export default SearchResultList;
