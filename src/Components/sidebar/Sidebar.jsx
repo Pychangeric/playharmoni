@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <Logo /> {/* Logo at the top */}
+      <Logo /> 
       <div className="fade-box">
         <HeadphonesIcon />
         <button className="sidebar-button" onClick={handleAudioButtonClick}>
