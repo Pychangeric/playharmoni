@@ -4,17 +4,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 200px;
+  /* Adjust for both top navbar and left sidebar */
+  padding-left: 200px; /* Account for 200px left sidebar */
+  width: calc(100% - 200px); /* Subtract 200px for sidebar */
+  height: calc(100vh - 10px); /* Subtract 40px for top navbar */
+  background-color: black; /* Set a background color */
 }
 
 .box-home {
-  background-color: #000; /* Set the background color to black */
+  background-color: #000;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 20px;
+
+  /* Use calc() to adjust for the sidebar width */
+  width: 100%; /* Adjusted to take full width */
 }
+.fa-play {
+    display: none;
+    position: absolute; /* Position the icon absolutely */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Center it precisely */
+    font-size: 2rem; /* Adjust the icon size as needed */
+    color: black; /* Custom font color (e.g., coral) */
+    z-index: 1; /* Ensure the icon is above the content */
+  }
+
+
+
+.home .music {
+  font-size: 2.5rem; /* Adjust the font size as needed */
+  color: #FF6F61; /* Custom font color (e.g., coral) */
+  text-align: center; /* Center the text */
+  margin-top: 40px; /* Add some top margin for spacing */
+  font-style: italic;
+  /* Add any additional styling you want */
+}
+
+.box-cards:hover .fa-play {
+  /* Show the play icon when the user hovers over the card */
+  display: block;
+}
+
+
 
 .box-cards {
   background-color: #fff; /* White background */
@@ -25,13 +60,15 @@
   text-align: center;
   width: calc(25% - 20px); /* Calculate width for four cards with gap */
   margin: 0; /* Remove default margin */
+  position: relative;
+
 }
 .box-cards img {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
   margin-bottom: 5px; /* Reduced margin */
-  max-height: 100px; /* Set a maximum height for the image */
+  max-height: 150px; /* Set a maximum height for the image */
 }
 
 .box-cards h4 {
@@ -59,6 +96,7 @@
 
 }
 
+
 .box-cards a:hover {
   color: #0099cc; /* Slightly darker shade on hover */
 }
@@ -73,8 +111,9 @@
 }
 
 /* Responsive adjustments */
-@media screen and (min-width: 768px) {
+/* Responsive adjustments */
+@media screen and (min-width: 992px) {
   .box-cards {
-    width: calc(25% - 20px); /* Calculate width for four cards with gap */
+    width: calc(20% - 10px); /* Calculate width for four cards with gap */
   }
 }

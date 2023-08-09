@@ -1,3 +1,4 @@
+/* Sidebar component styles */
 .sidebar {
   position: fixed;
   z-index: 2;
@@ -5,35 +6,37 @@
   left: 0;
   width: 200px;
   height: 100%;
-  background-color: #000; 
+  background-color: #000; /* Black background */
   overflow-y: auto;
   padding: 20px;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-  border-right: 2px solid #fff; /* Add white line border on the right */
-
+  border-right: 1px solid #fff; /* Add white line border on the right */
 
 }
 
+/* Sidebar buttons styles */
 .sidebar-buttons {
   list-style: none;
-  padding: 10px;
+  padding: 0;
 }
 
-
+/* Fade box styles */
 .fade-box {
-  background-color: #0a0720; 
+  background-color: #00CED1; /* Bright teal color */
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  color: #efeef0; 
+  color: #fff; /* White text color */
   cursor: pointer;
 }
 
+/* Sidebar headings styles */
 .sidebar-buttons h1 {
-  color: #0c1942; 
+  color: #00CED1; /* Bright teal color */
   margin-bottom: 10px;
 }
 
-
+/* Rest of your existing styles for the Sidebar component */
+/* ... */

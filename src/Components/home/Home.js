@@ -59,7 +59,7 @@ const Home = () => {
       <Category />
       <NavBar />
       <Sidebar />
-      <h1>Music List</h1>
+      <h1 className='music'>Available Songs</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
         <div className='box-home'>
           {musicItems.map((music, index) => (
