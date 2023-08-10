@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './playlist.css';
 
-const Playlist = () => {
+const Playlist = ({onPlaylistAdd}) => {
   const [visible, setVisible] = useState(false);
   const [playlists, setPlaylists] = useState([]);
   const [availableMusics, setAvailableMusics] = useState([]);
@@ -11,6 +11,8 @@ const Playlist = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioRef, setAudioRef] = useState(null);
+  const [playlistTitle, setPlaylistTitle] = useState('');
+  const [playlistDescription, setPlaylistDescription] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/playlists')
@@ -35,6 +37,7 @@ const Playlist = () => {
   };
 
   const handleAddMusicToPlaylist = async musicId => {
+
     if (currentPlaylistId) {
       try {
         const response = await fetch(`http://localhost:3000/playlists/${currentPlaylistId}/musics/${musicId}`, {
@@ -71,6 +74,9 @@ const Playlist = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     const formData = new FormData(event.target);
+    // formData.append('title', playlistTitle);
+    // formData.append('description', playlistDescription);
+
 
     try {
       const response = await fetch('http://localhost:3000/playlists', {
@@ -80,6 +86,9 @@ const Playlist = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        setPlaylistTitle('');
+        setPlaylistDescription('');
+        onPlaylistAdd(responseData);
         setPlaylists(prevPlaylists => [...prevPlaylists, responseData]);
       } else {
       }
@@ -145,8 +154,8 @@ const Playlist = () => {
       </button>
       {visible && (
         <form className="playlist-form" onSubmit={handleSubmit} encType="multipart/form-data">
-          <label>Title:</label>
-          <input type="text" name="title" placeholder="Playlist name" />
+           <label>Title:</label>
+        <input type="text" name="title" placeholder="Playlist name" value={playlistTitle} onChange={e => setPlaylistTitle(e.target.value)} />
 
           <label>Description:</label>
           <textarea name="description" placeholder="Optional description"></textarea>

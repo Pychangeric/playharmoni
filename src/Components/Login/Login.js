@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
-
-
-import Home from '../home/Home'
-import Signup from '../Signup/Signup';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import Logout from '../Logout';
+import SignupForm from '../Signup/Signup';
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLogged, setLogged] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     const token = localStorage.getItem('token');
     if (token) {
-
       setLogged(true);
       setLoading(false);
     } else {
-      setLoading(false); 
+      setLoading(false);
     }
   }, []);
 
@@ -47,11 +45,16 @@ function Login() {
         }
       })
       .then((data) => {
-    
         localStorage.setItem('token', data.token);
+        console.log('Before navigating');
         setLogged(true);
+        navigate('/home'); 
+        console.log('After navigating');
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        // Handle other errors here, if needed
+      });
   };
 
   const handleSignupLinkClick = () => {
@@ -62,36 +65,20 @@ function Login() {
     setShowSignup(false);
   };
 
-  const handleLogout = () => {
-    
-    fetch('http://localhost:3000/logout', {
-      method: 'DELETE', 
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`, 
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          
-          localStorage.removeItem('token');
-          setLogged(false);
-        } else {
-          throw new Error('Failed to log out');
-        }
-      })
-      .catch((error) => console.error(error));
-  };
-
   return (
     <div className='login'>
       {!loading && !isLogged && !showSignup ? (
-        
         <form onSubmit={handleLogin} className='in'>
           <div className='box'>
             <h1>Log In</h1>
             {error && <div className='error'>{error}</div>}
             <label>Email:</label>
-            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <label>Password:</label>
             <input
               type='password'
@@ -108,11 +95,10 @@ function Login() {
       ) : (
         isLogged ? (
           <div>
-            <Home />
-            <button onClick={handleLogout}>Log out</button>
+            <Logout onLogout={() => setLogged(false)} />
           </div>
         ) : (
-          <Signup onClose={handleSignupClose} />
+          <SignupForm onClose={handleSignupClose} />
         )
       )}
     </div>

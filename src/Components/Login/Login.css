@@ -3,7 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(9, 9, 49);
+  top: -50%;
+  left: 50%;
+  transform: translateY(-50px,-50px);
   }
   
   .in {

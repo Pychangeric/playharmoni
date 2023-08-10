@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  z-index: 2;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 200px;
@@ -11,6 +11,9 @@
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #111841; 
 
+}
+.logo {
+  margin-top: 0;
 }
 
 .sidebar-buttons {

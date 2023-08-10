@@ -1,12 +1,15 @@
 /* playlist.css */
 
 .container {
-  margin: 20px;
+  margin-left: 520px;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  padding: 20px;
   font-family: Arial, sans-serif;
 }
 
 h2 {
-  color: #333333; /* Dark Gray */
+  color: white; /* Dark Gray */
 }
 
 .btn {
@@ -29,7 +32,7 @@ label {
   margin-top: 10px;
 }
 .parag {
-  color:  black; /* Light Gray */
+  color:  wheat; /* Light Gray */
   margin-top: 5px;
   font-size: 14px;
 }
@@ -58,10 +61,10 @@ button[type="submit"] {
 }
 
 .playlist-item {
-  border: 1px solid #CCCCCC; /* Light Gray */
+  border: 1px solid #CCCCCC; 
   padding: 10px;
   margin: 10px 0;
-  background-color: #F9F9F9; /* Off-White */
+  background-color: #F9F9F9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;

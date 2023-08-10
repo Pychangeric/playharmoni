@@ -2,6 +2,7 @@ import React from 'react';
 import './NavBar.css'; 
 import Searchbare from '../Searche/Searchbare';
 
+
 const NavBar = () => {
   return (
     <div className="navbar">

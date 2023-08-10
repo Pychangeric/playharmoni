@@ -44,7 +44,7 @@
 }
 
 .d--search{
-   position: fixed;
+  position: absolute;
     width: 25%;
     height: 50px;
     background-color: aliceblue;

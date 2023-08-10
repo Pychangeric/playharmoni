@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Category.css'; 
 import MusicPopup from '../popup/MusicPopup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const Category = () => {
   const [showGenres, setShowGenres] = useState(false);
@@ -38,17 +40,12 @@ const Category = () => {
 
   const handleGenreClick = (genre) => {
     setSelectedGenre(genre);
-    setShowGenres(false);
-  };
-  const handleMusicPlay = (music) => {
-    // Implement the logic to add the selected music to the audio player and start playing
-    console.log(`Playing: ${music.title}`);
-    // Here, you can update the state of your audio player component to start playing the selected music
+    setShowPopup(true); // Open the popup when a genre is clicked
   };
 
-  const handleMusicClick = (genre) => {
-    setSelectedGenre(genre);
-    setShowPopup(true);
+  const handleMusicPlay = (music) => {
+    console.log(`Playing: ${music.title}`);
+    // Implement the logic to play the selected music
   };
 
   const handlePopupClose = () => {
@@ -59,6 +56,7 @@ const Category = () => {
     <div className="category">
       <button className="category-button" onClick={handleCategoryClick}>
         Categories
+        <FontAwesomeIcon icon={faAngleDown} />
       </button>
       {showGenres && (
         <div className="genre-dropdown">
@@ -66,21 +64,22 @@ const Category = () => {
             <button
               key={genre}
               className={selectedGenre === genre ? 'active' : ''}
-              onClick={() => handleMusicClick(genre)} // Use handleMusicClick instead of handleGenreClick
+              onClick={() => handleGenreClick(genre)} 
             >
               {genre}
+              <FontAwesomeIcon icon={faAngleRight} />
             </button>
           ))}
         </div>
       )}
 
-{showPopup && selectedGenre && (
-      <MusicPopup
-        selectedGenre={selectedGenre}
-        filteredMusic={filteredMusic}
-        onClose={handlePopupClose}
-        handleMusicPlay={handleMusicPlay} // Pass the handleMusicPlay function
-      />
+      {showPopup && selectedGenre && (
+        <MusicPopup
+          selectedGenre={selectedGenre}
+          filteredMusic={filteredMusic}
+          onClose={handlePopupClose}
+          handleMusicPlay={handleMusicPlay}
+        />
       )}
     </div>
   );

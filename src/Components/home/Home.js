@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Share from '../Share';
 import './Home.css';
-import Sidebar from '../sidebar/Sidebar';
 import NavBar from '../nav/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import Category from '../cartegory/Category';
-
+import Searchbare from '../Searche/Searchbare';
+import Sidebar from '../sidebar/Sidebar';
 
 const Home = () => {
   const [musicData, setMusicData] = useState([]);
@@ -56,10 +55,11 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <Category />
-      <NavBar />
-      <Sidebar />
+      
+
       <h1>Music List</h1>
+      <Searchbare />
+      <Sidebar />
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
         <div className='box-home'>
           {musicItems.map((music, index) => (

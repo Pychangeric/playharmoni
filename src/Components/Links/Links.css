@@ -1,0 +1,80 @@
+.links--a {
+    position: fixed;
+    width: 15%;
+    height: 100vh;
+    background-color: rgb(0, 1, 1);
+    position: fixed;
+    border-top-right-radius: 1.1em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    color: #fff;
+  }
+  
+  .links--a nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .links--a li {
+    margin: 0;
+  }
+  
+  .links--a a {
+    display: block;
+    padding: 15px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(251, 247, 247);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .links--a a:hover {
+    background-color: #060829;
+    color: #007bff;
+    border-radius: 4px;
+  }
+  
+  .links--a a.active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+  }
+  .links--a svg{
+    padding-right: 20px;
+    color: #007bff;
+  }
+  .bottom-links li {
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+    background-color: #007bff;
+    text-align: center;
+  }
+  .bottom-links svg{
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    .links--a {
+      width: 100%;
+      height: auto;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 2.1em;
+      position: static;
+      box-shadow: none;
+    }
+  
+    .links--a nav ul {
+      display: flex;
+      justify-content: space-around;
+      background-color: aliceblue;
+      border-top: 1px solid #ddd;
+    }
+  
+    .links--a a {
+      padding: 10px 0;
+      font-size: 16px;
+    }
+  }
+  
