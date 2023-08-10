@@ -1,68 +1,42 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './AudioPlayer.css';
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import VolumeDownIcon from '@mui/icons-material/VolumeDown';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import Slider from '@mui/material/Slider';
+import React, { useState, useEffect } from "react";
+import ReactAudioPlayer from "react-audioplayer";
 
-const AudioPlayer = ({ musicData, currentIndex, onPrevious, onNext }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const audioRef = useRef(null);
+const AudioPlayer = () => {
+  const [songs, setSongs] = useState([]);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   useEffect(() => {
-    // Use the 'currentIndex' to determine the current music
-    const currentMusic = musicData[currentIndex];
+    fetchSongsFromAPI();
+  }, []);
 
-    // Set up the audio source
-    audioRef.current.src = currentMusic.audio_url;
-    audioRef.current.load();
-
-    // Handle the case where the audio is played outside the AudioPlayer component
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
+  const fetchSongsFromAPI = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:3000/musics");
+      const data = await response.json();
+      setSongs(data);
+    } catch (error) {
+      console.error("Error fetching songs:", error);
     }
-  }, [musicData, currentIndex, isPlaying]);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
   };
 
-  const handleVolumeChange = (event, newValue) => {
-    setVolume(newValue);
-    audioRef.current.volume = newValue;
+  const handleSongChange = (newIndex) => {
+    setCurrentSongIndex(newIndex);
   };
 
   return (
     <div className="audio-player">
-      <audio ref={audioRef} preload="auto" />
-
-      <div className="controls">
-        <SkipPreviousIcon onClick={onPrevious} />
-        {isPlaying ? (
-          <PauseCircleOutlineIcon onClick={handlePlayPause} />
-        ) : (
-          <PlayCircleOutlineIcon onClick={handlePlayPause} />
-        )}
-        <SkipNextIcon onClick={onNext} />
-      </div>
-
-      <div className="volume-controls">
-        <VolumeDownIcon />
-        <Slider
-          value={volume}
-          onChange={handleVolumeChange}
-          min={0}
-          max={1}
-          step={0.01}
-          aria-labelledby="continuous-slider"
-        />
-        <VolumeUpIcon />
+      <ReactAudioPlayer
+        src={songs[currentSongIndex]?.audio_url || ""}
+        autoPlay={true}
+        controls
+        onEnded={() => handleSongChange((currentSongIndex + 1) % songs.length)}
+      />
+      <div className="song-info">
+        <img src={songs[currentSongIndex]?.cover_url} alt="Song Cover" />
+        <div className="song-details">
+          <h2>{songs[currentSongIndex]?.title}</h2>
+          <p>{songs[currentSongIndex]?.genre}</p>
+        </div>
       </div>
     </div>
   );

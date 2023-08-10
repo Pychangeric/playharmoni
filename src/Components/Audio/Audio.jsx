@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Player from '../Player';
-import './Audio.css'
+import { Close, VisibilityOff } from '@mui/icons-material';
+import './Audio.css';
 
-function Audio() {
+function Audio({ onOpenHome }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [showSongList, setShowSongList] = useState(false);
+
   const [songs] = useState([
     {
         title: "Congragulations",
@@ -78,47 +83,57 @@ function Audio() {
         src: "./music/This Year ( Blessing ) - Victor Thompson x Ehis D Greatest (Official Video).mp3"
       }
   ]); 
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
-
-  useEffect(() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > songs.length - 1) {
-        return 0;
-      } else {
-        return currentSongIndex + 1;
-      }
-    });
-  }, [currentSongIndex]);
-
   const handlePlayButtonClick = (index) => {
     setCurrentSongIndex(index);
+    setIsVisible(true);
   };
 
+  const handleCloseButtonClick = () => {
+    setIsVisible(false);
+    setCurrentSongIndex(0);
+    setShowSongList(false);
+    onOpenHome();
+  };
+
+  const handleShowSongList = () => {
+    setShowSongList(!showSongList);
+  }
   return (
-    <>
-      <div className="audio">
-        <Player
-          currentSongIndex={currentSongIndex}
-          setCurrentSongIndex={setCurrentSongIndex}
-          nextSongIndex={nextSongIndex}
-          songs={songs}
-        />
+    <div className="audio">
+      {isVisible && (
+        <div className="popup">
+          <button className="close-button" onClick={handleCloseButtonClick}>
+            <Close />
+          </button>
+          <Player
+            songs={songs}
+            currentSongIndex={currentSongIndex}
+          />
+        </div>
+      )}
+      <div className="hide-button">
+        <button onClick={handleShowSongList}>
+          {isVisible ? <VisibilityOff /> : 'Show Audio'}
+        </button>
       </div>
-      <div className="song-list">
-        <h5>Audios available</h5>
-        {songs.map((song, index) => (
-          <div key={index}>
-            <img src={song.img_src} alt={song.title} />
-            <div>
-              <h6>{song.title}</h6>
-              <p>{song.artist}</p>
-              <button type="button" onClick={() => handlePlayButtonClick(index)}>Play</button>
+      {showSongList && (
+        <div className="song-list">
+          <h5>Audios available</h5>
+          {songs.map((song, index) => (
+            <div key={index}>
+              <img src={song.img_src} alt={song.title} />
+              <div>
+                <h6>{song.title}</h6>
+                <p>{song.artist}</p>
+                <button type="button" onClick={() => handlePlayButtonClick(index)}>
+                  Play
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
