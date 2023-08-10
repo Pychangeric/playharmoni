@@ -1,5 +1,6 @@
 /* MusicPopup.css */
 
+/* Styles for the MusicPopup component */
 .music-popup-container {
   position: fixed;
   top: 0;
@@ -7,47 +8,78 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(19, 15, 54, 0.5);
-  z-index: 1000;
+  background-color: black;
+  z-index: 9999;
+
 }
-
-
 .music-popup {
-  background-color: #0b1536;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  max-height: 80%;
-  overflow: auto;
-  position: relative;
-}
-
-.music-cards {
   background-color: #000;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
-  overflow-y: auto; /* Add this line to enable vertical scrollbar */
-  max-height: calc(80vh - 140px); /* Adjust the max height as needed */
+  padding-top: 150px;
+  /*margin-top: 20px;*/
+  overflow-y: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #00CED1 transparent; /* For Firefox */
+
+  /* For Webkit based browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #00CED1;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 
 
+  /* Use calc() to adjust for the sidebar width */
+  width: 96%;/* Reset margin to make sure it starts right after the sidebar */
+}
+/* MusicPopup.css */
+
+/* Add the following CSS to customize the scrollbar appearance */
+
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color:black;
+  background-color: white;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+.music-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 .music-card {
   background-color: #fff; /* White background */
   border: 1px solid #00CED1; /* Teal primary color border */
   border-radius: 10px;
-  padding: 10px; /* Reduced padding */
+  padding: 2px; /* Reduced padding */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: calc(20% - 10px); /* Calculate width for four cards with gap */
+  width: calc(15% - 10px); /* Calculate width for four cards with gap */
   margin: 0; /* Remove default margin */
   position: relative;
+
 }
 
 .music-card img {
@@ -55,26 +87,32 @@
   height: auto;
   border-radius: 5px;
   margin-bottom: 5px; /* Reduced margin */
-  max-height: 150px;}
+  max-height: 150px;
+}
 
 .music-card h4 {
   margin: 0;
   font-size: 1.2rem;
-  color: #333; /* Dark gray text color */
+  color: #333;
+}
 
+.music-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
 }
 
 .music-card button {
-  background-color: #0b2d52;
-  color: white;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
-
-.music-popup-container {
-  padding-left: 200px; /* Left padding of 250px */
-  padding-top: 20px; /* Top padding of 40px */
+.music-card button:hover {
+  background-color: #0056b3;
 }

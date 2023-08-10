@@ -6,7 +6,7 @@ import Audio from '../Audio/Audio';
 import Logo from '../Logo/Logo';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import Recommendation from '../Recomendation/Recommendation';
+// import Recommendation from '../Recomendation/Recommendation';
 
 const Sidebar = () => {
   const [showAudio, setShowAudio] = useState(false);
@@ -40,7 +40,7 @@ const Sidebar = () => {
       </div>
       {showPlaylist && <Playlist />}
       <Category />
-      <Recommendation />
+      {/* <Recommendation /> */}
     </div>
   );
 };
