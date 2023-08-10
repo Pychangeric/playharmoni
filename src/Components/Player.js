@@ -22,7 +22,6 @@ function Player(props) {
       const duration = Math.floor(audioEl.current.duration);
       setAudioDuration(duration);
     });
-
     return () => {
       audioEl.current.removeEventListener('loadedmetadata', () => {
         const duration = Math.floor(audioEl.current.duration);
@@ -39,16 +38,17 @@ function Player(props) {
   }, []);
 
   useEffect(() => {
-    const handleAudioEnded = () => {
-      SkipSong(true); // Play the next song when the current song ends
+    const handleLoadedMetadata = () => {
+      const duration = Math.floor(audioEl.current.duration);
+      setAudioDuration(duration);
     };
-
-    audioEl.current.addEventListener('ended', handleAudioEnded);
-
+  
+    audioEl.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+  
     return () => {
-      audioEl.current.removeEventListener('ended', handleAudioEnded);
+      audioEl.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
     };
-  }, [audioEl]);
+  }, []);
 
   const SkipSong = (forwards = true) => {
     setIsPlaying(false); // Pause the player first
