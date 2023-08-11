@@ -100,6 +100,20 @@ function Player(props) {
       <audio src={props.songs[props.currentSongIndex].src} ref={audioEl}></audio>
       <h4>Playing now</h4>
       <PlayerDetails song={props.songs[props.currentSongIndex]} />
+      {props.songs && props.songs.length > 0 && props.currentSongIndex >= 0 && props.nextSongIndex >= 0 ? (
+        <div>
+          <PlayerControls
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            SkipSong={SkipSong}
+            handleVolume={handleVolume}
+            volume={volume}
+          />
+          <p>Next up: <span>{props.songs[props.nextSongIndex]?.title} by {props.songs[props.nextSongIndex]?.artist}</span></p>
+        </div>
+      ) : (
+        <p>Loading or no data available.</p>
+      )}
       <input
         type="range"
         min="0"
@@ -109,15 +123,6 @@ function Player(props) {
         onChange={handleSeek}
       />
       <p>Current Time: {formatTime(currentTime)}</p>
-
-      <PlayerControls
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        SkipSong={SkipSong}
-        handleVolume={handleVolume}
-        volume={volume}
-      />
-      <p>Next up: <span>{props.songs[props.nextSongIndex].title} by {props.songs[props.nextSongIndex].artist}</span></p>
     </div>
   );
 }

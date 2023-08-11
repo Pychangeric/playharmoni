@@ -1,47 +1,16 @@
 /* Audio.css */
 .audio {
-    /* Your existing styles */
-    position: fixed;
-    left: 300px;
-    top: 100px;
-    bottom: 0;
-    width: 90%;
-    text-align: center;
-    background-color: #080808;
-    color: rgb(243, 239, 239);
-    padding: 10px;
-  }
-  .close-button {
-    position: fixed;
-    z-index: 1000;
-    background: #fff;
-    border: 2px solid 2;
-    cursor: pointer;
-    position: absolute;
-    top: 70px;
-    left: 20px;
-  }
-  
-  .hide-button {
-    background: #fff;
-    border: 2px solid 2;
-    cursor: pointer;
-    position: absolute;
-    top: 70px;
-    left: 300px;
-    transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .hide-button button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-  }
-  
+  /* Your existing styles */
+  position: fixed;
+  left: 300px;
+  top: 100px;
+  bottom: 0;
+  width: 90%;
+  text-align: center;
+  background-color: #080808;
+  color: rgb(243, 239, 239);
+  padding: 10px;
+}
+.song-list {
+  fill: ;
+}
