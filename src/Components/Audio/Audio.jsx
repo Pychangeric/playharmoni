@@ -81,6 +81,7 @@ function Audio() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSongListOpen, setIsSongListOpen] = useState(false);
 
   useEffect(() => {
     setNextSongIndex(() => {
@@ -100,18 +101,28 @@ function Audio() {
     setSearchTerm(event.target.value);
   };
 
+
   const filteredSongs = songs.filter((song) => {
     return song.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  const handleOpenSongList = () => {
+    setIsSongListOpen(true);
+  };
+
+  const handleCloseSongList = () => {
+    setIsSongListOpen(false);
+  };
+
+
   return (
     <>
-       <div className="audio">
+      <div className="audio">
         <Player
-         currentSongIndex={currentSongIndex}
-         setCurrentSongIndex={setCurrentSongIndex}
-         nextSongIndex={nextSongIndex}
-         songs={filteredSongs.length > 0 ? filteredSongs : songs} // Make sure this is passed correctly
+          currentSongIndex={currentSongIndex}
+          setCurrentSongIndex={setCurrentSongIndex}
+          nextSongIndex={nextSongIndex}
+          songs={filteredSongs.length > 0 ? filteredSongs : songs}
         />
       </div>
       <div className="search-container">
@@ -122,18 +133,28 @@ function Audio() {
           onChange={handleSearchChange}
         />
       </div>
-      <div className="song-list">
-        <h5>Audios available</h5>
-        {filteredSongs.map((song, index) => (
-          <div key={index}>
-            <img src={song.img_src} alt={song.title} />
-            <div>
-              <h6>{song.title}</h6>
-              <p>{song.artist}</p>
-              <button type="button" onClick={() => handlePlayButtonClick(index)}>Play</button>
+      {isSongListOpen && (
+        <div className="song-list-menu">
+          <div className="close-button" onClick={handleCloseSongList}>Close</div>
+          <div className="song-list">
+            <h5>Audios available</h5>
+            <div className="scrollable-song-list">
+              {filteredSongs.map((song, index) => (
+                <div key={index}>
+                  <img src={song.img_src} alt={song.title} />
+                  <div>
+                    <h6>{song.title}</h6>
+                    <p>{song.artist}</p>
+                    <button type="button" onClick={() => handlePlayButtonClick(index)}>Play</button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        </div>
+      )}
+      <div className="open-song-list-button">
+        <button onClick={handleOpenSongList}>Open Song List</button>
       </div>
     </>
   );

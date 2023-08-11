@@ -38,6 +38,12 @@ const Home = () => {
     return acc;
   }, {});
 
+  const [isMusicPlayerVisible, setIsMusicPlayerVisible] = useState(false);
+
+  const toggleMusicPlayerVisibility = () => {
+    setIsMusicPlayerVisible(!isMusicPlayerVisible);
+  };
+
   // Define an array of background colors
   const cardBackgroundColors = [
     '#00CED1', // Bright Teal
@@ -59,11 +65,14 @@ const Home = () => {
   return (
     <div className='home'>
       <h1>My Audio Player</h1>
-      <MusicPlayer />
       <Footer />
       <Category />
       <NavBar />
       <Sidebar />
+      <button onClick={toggleMusicPlayerVisibility}>
+        {isMusicPlayerVisible ? 'Hide Music Player' : 'Show Music Player'}
+      </button>
+      {isMusicPlayerVisible && <MusicPlayer />}
       <h1>Music List</h1>
       {Object.entries(groupedMusicData).map(([genre, musicItems]) => (
         <div className='box-home'>

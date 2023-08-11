@@ -11,6 +11,37 @@
   color: rgb(243, 239, 239);
   padding: 10px;
 }
-.song-list {
-  fill: ;
+.song-list-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #000000;
+  color: #f1f1f1;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
 }
+
+.close-button {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.close-button:hover {
+  background-color: blue;
+
+}
+
+.open-song-list-button {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1001;
+}
+.scrollable-song-list {
+  max-height: 400px; 
+  overflow-y: scroll;
+  overflow-x: hidden; 
+}
+
