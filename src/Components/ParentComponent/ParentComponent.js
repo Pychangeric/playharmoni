@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Home from '../home/Home'; // Import your Home component
-import Audio from '../Audio/Audio'; // Import your Audio component
 
 function ParentComponent() {
     const [isHomeVisible, setIsHomeVisible] = useState(true);
@@ -20,7 +19,6 @@ function ParentComponent() {
         {isHomeVisible ? (
           <Home onOpenAudio={handleOpenAudio} />
         ) : (
-          <Audio onOpenHome={handleOpenHome} />
         )}
       </div>
     );

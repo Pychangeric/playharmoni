@@ -1,4 +1,4 @@
-/* AudioPlayer.css */
+/* AudioPlayer.css
 
 .audio-player {
     position: fixed;
@@ -33,13 +33,11 @@
     align-items: center;
   }
   
-  /* Style for the Slider component */
   .MuiSlider-root {
     width: 100%;
     color: white;
   }
   
-  /* Styling the icons */
   .MuiSvgIcon-root {
     font-size: 32px;
     cursor: pointer;
@@ -48,4 +46,4 @@
   audio {
     display: none;
   }
-  
+  */

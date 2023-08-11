@@ -8,7 +8,6 @@ import NavBar from '../nav/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Category from '../cartegory/Category';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
 
 
 const Home = () => {
@@ -60,7 +59,6 @@ const Home = () => {
   return (
     <div className='home'>
       <h1>My Audio Player</h1>
-      <AudioPlayer />
       <MusicPlayer />
       <Footer />
       <Category />
