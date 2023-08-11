@@ -76,7 +76,44 @@ function Audio() {
         artist: "Victor Thompson x Ehis D Greatest",
         img_src: "./images/song-9.jpeg",
         src: "./music/This Year ( Blessing ) - Victor Thompson x Ehis D Greatest (Official Video).mp3"
+      },
+      {
+        title: "Inauma",
+        artist: "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Bien - Inauma (Official Music Video).mp3"
+      },
+      {
+        title: "Lil mama",
+        artist: "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Sauti Sol - Lil Mama (Official Audio).mp3"
+      },
+      {
+        title: "Midnight Train",
+        artist:  "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Sauti Sol - Midnight Train (Official Audio) SMS [Skiza 9935656] to 811.mp3"
+      },
+      {
+        title: "Short and sweet",
+        artist:  "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Sauti Sol - Short N Sweet  ft Nyashinski (Official Music Video) SMS [Skiza 1051907] to 811.mp3"
+      },
+      {
+        title: "Suzanna",
+        artist:  "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Sauti Sol - Suzanna (Official Video) SMS [SKIZA 9935604] TO 811.mp3"
+      },
+      {
+        title: "Extragavanza",
+        artist: "Sauti sol",
+        img_src: "./images/song-11.jpeg",
+        src: "./music/Sauti Sol ft bensoul extravaganza lyrics.mp3"
       }
+
   ]); 
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
