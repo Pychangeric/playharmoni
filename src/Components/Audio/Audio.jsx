@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Player from '../Player';
-import { Close, VisibilityOff } from '@mui/icons-material';
 import './Audio.css';
 
-function Audio({ onOpenHome }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [showSongList, setShowSongList] = useState(false);
-
-  const [songs] = useState([
+function Audio() {
+  const [songs, setSongs] = useState([
     {
         title: "Congragulations",
         artist: "Ada ehi",
@@ -83,59 +78,65 @@ function Audio({ onOpenHome }) {
         src: "./music/This Year ( Blessing ) - Victor Thompson x Ehis D Greatest (Official Video).mp3"
       }
   ]); 
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    setNextSongIndex(() => {
+      if (currentSongIndex + 1 > songs.length - 1) {
+        return 0;
+      } else {
+        return currentSongIndex + 1;
+      }
+    });
+  }, [currentSongIndex]);
+
   const handlePlayButtonClick = (index) => {
     setCurrentSongIndex(index);
-    setIsVisible(true);
   };
 
-  const handleCloseButtonClick = () => {
-    setIsVisible(false);
-    setCurrentSongIndex(0);
-    setShowSongList(false);
-    onOpenHome();
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
-  const handleShowSongList = () => {
-    setShowSongList(!showSongList);
-  }
+  const filteredSongs = songs.filter((song) => {
+    return song.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
-    <div className="audio">
-      {isVisible && (
-        <div className="popup">
-          <button className="close-button" onClick={handleCloseButtonClick}>
-            <Close />
-          </button>
-          <Player
-            songs={songs}
-            currentSongIndex={currentSongIndex}
-          />
-        </div>
-      )}
-      <div className="hide-button">
-        <button onClick={handleShowSongList}>
-          {isVisible ? <VisibilityOff /> : 'Show Audio'}
-        </button>
+    <>
+       <div className="audio">
+        <Player
+         currentSongIndex={currentSongIndex}
+         setCurrentSongIndex={setCurrentSongIndex}
+         nextSongIndex={nextSongIndex}
+         songs={filteredSongs.length > 0 ? filteredSongs : songs} // Make sure this is passed correctly
+        />
       </div>
-      {showSongList && (
-        <div className="song-list">
-          <h5>Audios available</h5>
-          {songs.map((song, index) => (
-            <div key={index}>
-              <img src={song.img_src} alt={song.title} />
-              <div>
-                <h6>{song.title}</h6>
-                <p>{song.artist}</p>
-                <button type="button" onClick={() => handlePlayButtonClick(index)}>
-                  Play
-                </button>
-              </div>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search for audio"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </div>
+      <div className="song-list">
+        <h5>Audios available</h5>
+        {filteredSongs.map((song, index) => (
+          <div key={index}>
+            <img src={song.img_src} alt={song.title} />
+            <div>
+              <h6>{song.title}</h6>
+              <p>{song.artist}</p>
+              <button type="button" onClick={() => handlePlayButtonClick(index)}>Play</button>
             </div>
-          ))}
-        </div>
-      )}
-    </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
 export default Audio;
-
